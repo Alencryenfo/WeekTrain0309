@@ -36,13 +36,13 @@ signed main() {
         }
     }
 
-    // for (int i = 1; i <= n; i++) {
-    //     if (a[i] % lcm != 0) {
-    //         std::cout << "No";
-    //         return 0;
-    //     }
-    //     times[i] = a[i] / lcm;
-    // }
+    for (int i = 1; i <= n; i++) {
+        if (a[i] % lcm != 0) {
+            std::cout << "No";
+            return 0;
+        }
+        times[i] = a[i] / lcm;
+    }
     if (n == 1) {
         int lcm_b = b[1];
         for (int j = 2; j <= m; ++j) {
@@ -55,13 +55,14 @@ signed main() {
         if (lcm_b == a[1]) {
             std::cout << "Yes\n";
             for (int j = 1; j <= m; ++j) {
-                std::cout << b[j] << (j < m - 1 ? " " : "\n");
+                std::cout << b[j] << (j < m ? " " : "\n");
             }
         } else {
             std::cout << "No\n";
         }
+        return 0;
     }
-    else if (m == 1) {
+    if (m == 1) {
         int gcd_a = a[1];
         for (int i = 2; i <= n; ++i) {
             gcd_a = std::gcd(gcd_a, a[i]);
@@ -74,12 +75,13 @@ signed main() {
         } else {
             std::cout << "No\n";
         }
+        return 0;
     }
 
     std::cout << "Yes\n";
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= m; j++) {
-            if (j == i % m) {
+            if (j - 1 == (i - 1) % m) {
                 std::cout << a[i] << ' ';
             } else {
                 std::cout << b[j] << " ";
