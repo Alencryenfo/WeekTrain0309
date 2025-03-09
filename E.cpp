@@ -14,7 +14,8 @@ int main() {
             else if (s[0]=='1')cout<<"Alice"<<endl;
         }
         else {
-            if (s[0]=='0'&&s[])cout<<"Bob"<<endl;
+            if (s[0]=='0'&&s.back()=='0')cout<<"Bob"<<endl;
+            else cout<<"Alice"<<endl;
         }
     }
 
