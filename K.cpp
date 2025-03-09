@@ -2,6 +2,7 @@
 // Created by 26444 on 25-3-9.
 //
 // guanghere
+#include <cmath>
 #include <format>
 #include <iostream>
 
@@ -26,25 +27,12 @@ int main() {
     std::cout.tie(nullptr);
     int n, m;
     std::cin >> n >> m;
-    if (m == 1) {
-        std::cout << 0 << std::endl;
-        return 0;
-    }
     ull ans = 0;
-    for (int i = 1; i <= n - 1; i++) {
-        ans += i * i *
-               (n - i) * (quick_pow(i + 1, m) - 2 * quick_pow(i, m) +
-                       quick_pow(i - 1, m) + 100 * mod);
-
-        //ans += (n - i) * m * (m - 1) * quick_pow(i + 1, m - 2) * i * i;
+    for (ull i = 1; i <= n - 1; i++) {
+        ans += i * i % mod *
+               (n - i) % mod * (quick_pow(i + 1, m) - 2 * quick_pow(i, m) +
+                       quick_pow(i - 1, m) + 2 * mod) % mod;
         ans %= mod;
     }
-    // for (int b = 1; b <= n; b++) {
-    //     for (int a = b; a <= n; a++) {
-    //         ull contribution = (a - b) * (a - b) * quick_pow(a - b + 1, m -
-    //         2); ans += contribution; ans %= mod; std::cerr << std::format("a
-    //         = {}, b = {}, contribution = {}\n", a, b, contribution);
-    //     }
-    // }
     std::cout << ans << std::endl;
 }
